@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Main page</title>
+  </head>
+  <body>
+    <div class="">
+      <table>
+  			<tr>
+  				<th>ID</th>
+  				<th>Trip Name</th>
+  				<th>Description</th>
+  				<th>Members</th>
+  				<th>Date</th>
+  			</tr>
+  			{% for trip in trips %}
+  				<tr>
+  					<td>{{trip.id}}</td>
+  					<td><a href="/3/expand/{{trip.id}}/">{{trip.trip_name}}</a></td>
+  					<td>{{trip.description}}</td>
+  					<td>
+              {% for i in trip.members %}
+                {{i}}
+              {% endfor %}
+            </td>
+  					<td>{{trip.date}}</td>
+  				</tr>
+  			{% endfor %}
+  		</table>
+    </div>
+    <div class="">
+      <a href="insert_trip">Add Trip</a>
+      <!-- <button type="button" name="ADD" ><a href="#">ADD</a></button> -->
+
+    </div>
+    <div class="">
+			<form class="" action="delete_trip" method="post">
+				{% csrf_token %}
+				<input type="submit" name="Delete" value="Delete">
+				<input type="number" name="delete_value_trip" placeholder="Enter the S.No.">
+			</form>
+		</div>
+  </body>
+</html>

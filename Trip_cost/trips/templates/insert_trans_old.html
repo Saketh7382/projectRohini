@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Transaction</title>
+  </head>
+  <body>
+    <div class="">
+      <table>
+  			<tr>
+  				<th>ID</th>
+  				<th>Trip Name</th>
+  				<th>amount from</th>
+  				<th>amount to</th>
+  				<th>amount</th>
+  			</tr>
+  			{% for item in trans %}
+  				<tr>
+  					<td>{{item.id}}</td>
+  					<td>{{item.trip_name}}</td>
+  					<td>{{item.amt_from}}</td>
+  					<td>
+              {% for i in item.amount_to %}
+                {{i}}
+              {% endfor %}
+            </td>
+  					<td>{{item.amount}}</td>
+  				</tr>
+  			{% endfor %}
+  		</table>
+    </div>
+    <div class="">
+      <form class="" action="insert_trans_value" method="post">
+        {% csrf_token %}
+        <label>Amount From:</label>
+        <input type="text" name="amt_from">
+        <label>Amount To:</label>
+        <input type="text" name="amount_to" placeholder="Enter the names of members with ,">
+        <label>Amount:</label>
+        <input type="number" name="amount" >
+        <input type="submit" name="submit" value="ADD">
+      </form>
+    </div>
+    <div class="">
+			<form class="" action="delete_trans" method="post">
+				{% csrf_token %}
+				<input type="submit" name="Delete" value="Delete">
+				<input type="number" name="delete_value_trans" placeholder="Enter the ID">
+			</form>
+		</div>
+    <a href="analysis_trans">Calculate</a>
+    <a href="/">Back</a>
+
+  </body>
+
+</html>

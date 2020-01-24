@@ -1,0 +1,91 @@
+
+
+{% block content %}
+  <h1>Transaction Details</h1>
+  <div class="">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>Trip Name</th>
+				<th>Amount From</th>
+				<th>Amount To</th>
+				<th>Amount</th>
+			</tr>
+			{% for data in transactions %}
+				<tr>
+					<td>{{data.id}}</td>
+					<td>{{data.trip_name}}</td>
+					<td>{{data.amt_from}}</td>
+          <!-- <td>
+            {% for name in names %}
+              {% if data.name == 'True' %}
+                {{name}}
+              {% endif %}
+            {% endfor %}
+          </td> -->
+					<!-- <td>{{ data.amount_to }}</td> -->
+          <td>
+            {% for i in data.amount_to %}
+              {{i}}
+            {% endfor %}
+          </td>
+					<td>{{data.amount}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+  <div class="">
+      <h2>Analysis 1 (self amount)</h2>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>Amount</th>
+        </tr>
+        {% for item in analysis1 %}
+          <tr>
+            {% for i in item %}
+              <td>{{i}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+  </div>
+  <div class="">
+      <h2>Analysis 2 (Total amount spend by)</h2>
+      <table>
+        <tr>
+          <th>Person</th>
+          <th>Amount</th>
+        </tr>
+        {% for item in analysis2 %}
+          <tr>
+            {% for i in item %}
+              <td>{{i}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+  </div>
+  <div class="">
+      <h2>Analysis 3 (Amount that has needs to be given to others)</h2>
+      <table>
+        <tr>
+          <th>Amount From</th>
+          <th>To</th>
+          <th>Amount</th>
+        </tr>
+        {% for item in analysis3 %}
+          <tr>
+            {% for i in item %}
+              <td>{{i}}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </table>
+  </div>
+  <a href="/">Back</a>
+  <!-- <form class="" action="" method="post">
+      <input type="=button" name="calculate" value="calculate">
+  </form> -->
+
+{% endblock %}
