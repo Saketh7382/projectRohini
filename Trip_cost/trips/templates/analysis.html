@@ -1,91 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Analysis</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 
-{% block content %}
-  <h1>Transaction Details</h1>
-  <div class="">
-		<table>
-			<tr>
-				<th>ID</th>
-				<th>Trip Name</th>
-				<th>Amount From</th>
-				<th>Amount To</th>
-				<th>Amount</th>
-			</tr>
-			{% for data in transactions %}
-				<tr>
-					<td>{{data.id}}</td>
-					<td>{{data.trip_name}}</td>
-					<td>{{data.amt_from}}</td>
-          <!-- <td>
-            {% for name in names %}
-              {% if data.name == 'True' %}
-                {{name}}
-              {% endif %}
-            {% endfor %}
-          </td> -->
-					<!-- <td>{{ data.amount_to }}</td> -->
-          <td>
-            {% for i in data.amount_to %}
-              {{i}}
-            {% endfor %}
-          </td>
-					<td>{{data.amount}}</td>
-				</tr>
-			{% endfor %}
-		</table>
-	</div>
-  <div class="">
-      <h2>Analysis 1 (self amount)</h2>
-      <table>
-        <tr>
-          <th>Person</th>
-          <th>Amount</th>
-        </tr>
-        {% for item in analysis1 %}
-          <tr>
-            {% for i in item %}
-              <td>{{i}}</td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </table>
-  </div>
-  <div class="">
-      <h2>Analysis 2 (Total amount spend by)</h2>
-      <table>
-        <tr>
-          <th>Person</th>
-          <th>Amount</th>
-        </tr>
-        {% for item in analysis2 %}
-          <tr>
-            {% for i in item %}
-              <td>{{i}}</td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </table>
-  </div>
-  <div class="">
-      <h2>Analysis 3 (Amount that has needs to be given to others)</h2>
-      <table>
-        <tr>
-          <th>Amount From</th>
-          <th>To</th>
-          <th>Amount</th>
-        </tr>
-        {% for item in analysis3 %}
-          <tr>
-            {% for i in item %}
-              <td>{{i}}</td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      </table>
-  </div>
-  <a href="/">Back</a>
-  <!-- <form class="" action="" method="post">
-      <input type="=button" name="calculate" value="calculate">
-  </form> -->
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-{% endblock %}
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h2 class="my-0 mr-md-auto font-weight-normal">Trip Analysis</h2>
+        <button type="button" class="btn btn-outline-info float-right" style="border: 1px solid #17a2b8">Sign-Out</button>
+      </div>
+      <div class="">
+        <a href="/" class="float-right btn btn-outline-secondary">
+          <span class="fas fa-long-arrow-alt-left"></span> Back
+        </a>
+      </div>
+      <div class="">
+        <div class="">
+      		<table class="table table-striped">
+
+      			<tr>
+      				<th scope="col">ID</th>
+      				<th scope="col">Trip Name</th>
+      				<th scope="col">Amount From</th>
+      				<th scope="col">Amount To</th>
+      				<th scope="col">Amount</th>
+      			</tr>
+      			{% for data in transactions %}
+      				<tr>
+      					<td scope="row">{{data.id}}</td>
+      					<td>{{data.trip_name}}</td>
+      					<td>{{data.amt_from}}</td>
+                <!-- <td>
+                  {% for name in names %}
+                    {% if data.name == 'True' %}
+                      {{name}}
+                    {% endif %}
+                  {% endfor %}
+                </td> -->
+      					<!-- <td>{{ data.amount_to }}</td> -->
+                <td>
+                  {% for i in data.amount_to %}
+                    {{i}}
+                  {% endfor %}
+                </td>
+      					<td>{{data.amount}}</td>
+      				</tr>
+      			{% endfor %}
+      		</table>
+      	</div>
+        <div class="">
+            <h2>Analysis 1 </h2>
+            <table class="table">
+              <caption>(self amount)</caption>
+              <tr>
+                <th scope="col">Person</th>
+                <th scope="col">Amount</th>
+              </tr>
+              {% for item in analysis1 %}
+                <tr>
+                  {% for i in item %}
+                    <td>{{i}}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </table>
+        </div>
+        <div class="">
+            <h2>Analysis 2 </h2>
+            <table class="table">
+              <caption>(Total amount spend by)</caption>
+              <tr>
+                <th scope="col">Person</th>
+                <th scope="col">Amount</th>
+              </tr>
+              {% for item in analysis2 %}
+                <tr>
+                  {% for i in item %}
+                    <td>{{i}}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </table>
+        </div>
+        <div class="">
+            <h2>Analysis 3 </h2>
+            <table class="table">
+              <caption>(Amount that has needs to be given to others)</caption>
+              <tr>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Amount</th>
+              </tr>
+              {% for item in analysis3 %}
+                <tr>
+                  {% for i in item %}
+                    <td>{{i}}</td>
+                  {% endfor %}
+                </tr>
+              {% endfor %}
+            </table>
+        </div>
+        <!-- <a href="/">Back</a> -->
+        <!-- <form class="" action="" method="post">
+            <input type="=button" name="calculate" value="calculate">
+        </form> -->
+        </div>
+    </div>
+  </body>
+</html>

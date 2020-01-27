@@ -65,7 +65,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <form class="" action="insert_trans_value" method="post">
+                  <!-- <form class="" action="insert_trans_value" method="post">
                     {% csrf_token %}
                     <label>Amount From:</label>
                     <input type="text" name="amt_from"><br>
@@ -74,6 +74,27 @@
                     <label>Amount:</label>
                     <input type="number" name="amount" ><br>
                     <input type="submit" name="submit" value="ADD">
+                  </form> -->
+                  <form class="form" action="insert_trans_value" role="form" autocomplete="off" method="post">
+                    {% csrf_token %}
+                      <div class="form-group">
+                          <label >Amount From:</label>
+                          <input type="text" class="form-control" required="" name="amt_from">
+                      </div>
+                      <div class="form-group">
+                          <label >Amount To:</label>
+                          <input type="text" class="form-control" required="" name="amount_to">
+                          <span class="form-text small text-muted">
+                                  Enter names of members with ',' in between.
+                              </span>
+                      </div>
+                      <div class="form-group">
+                          <label >Amount:</label>
+                          <input type="number" class="form-control" required="" name="amount">
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-success btn-lg float-right" name="submit" value="ADD">Add Transaction</button>
+                      </div>
                   </form>
                 </div>
                 <!-- <div class="modal-footer">
@@ -84,7 +105,7 @@
             </div>
           </div>
           <button disabled type="button" class="btn btn-outline-danger" onclick="display_delete()">Delete</button>
-          <a href="/3" class="float-right btn btn-outline-secondary">
+          <a href="/" class="float-right btn btn-outline-secondary">
             <span class="fas fa-long-arrow-alt-left"></span> Back
           </a>
         </div>
@@ -107,7 +128,7 @@
                 <tr>
                   <!-- <td>{{item.id}}<a href="delete_trans/{{item.id}}" style="color:red;text-decoration: none;"><font size="6"> -</font></a></td> -->
                   <td>{{item.id}}</td>
-                  <td>{{item.trip_name}}</td>
+                  <td>{{item.date}}</td>
                   <td>{{item.amt_from}}</td>
                   <td>
                     {% for i in item.amount_to %}

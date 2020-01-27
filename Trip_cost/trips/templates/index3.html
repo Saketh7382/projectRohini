@@ -44,7 +44,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="" action="insert_trip_value" method="post">
+                <!-- <form class="" action="insert_trip_value" method="post">
                   {% csrf_token %}
                   <label>Trip Name:</label>
                   <input type="text" name="trip_name"><br>
@@ -53,6 +53,27 @@
                   <label>Members:</label>
                   <input type="text" name="members" placeholder="Enter the names of members with ,">
                   <input type="submit" name="submit" value="ADD">
+                </form> -->
+                <form class="form" action="insert_trip_value" role="form" autocomplete="off" method="post">
+                  {% csrf_token %}
+                    <div class="form-group">
+                        <label >Trip Name</label>
+                        <input type="text" class="form-control" required="" name="trip_name">
+                    </div>
+                    <div class="form-group">
+                        <label >Description</label>
+                        <input type="textarea" class="form-control" required="" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label >Verify</label>
+                        <input type="text" class="form-control" required="" name="members">
+                        <span class="form-text small text-muted">
+                                Enter names of members with ',' in between.
+                            </span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-lg float-right" name="submit" value="ADD">START</button>
+                    </div>
                 </form>
               </div>
             </div>
